@@ -1,3 +1,5 @@
+""" Scrapes Hamilton County 911 site for specific incident data into a dataframe. """
+
 import pandas as pd
 import requests
 import urllib.request
