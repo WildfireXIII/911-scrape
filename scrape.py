@@ -33,9 +33,8 @@ def get_data():
     # parse for the table and rows of the incidents table
     tag = soup.find(id='incidents')
     rows = tag.findAll("tr")
-
     
-    firstRowSkipped = False
+    firstRowSkipped = False # first row flag
     for row in rows:
         # skip the first row because it's just header stuff
         if not firstRowSkipped:
@@ -65,9 +64,6 @@ def get_data():
     masked = df.Type.isin(blacklist_types)
     filtered_df = df[~masked]
     
-    # only get rows with a specific location mentioned
-    # loc_df = filtered_df[filtered_df.Location.str.contains("Brainerd Rd")]
-
     # filter to only include certain locations
     whitelist_strs = ["Brainerd Rd", "Douglas"]
     
@@ -86,7 +82,6 @@ if __name__ == "__main__":
     
     while(True):
         print("Scraping...")
-
         df = get_data()
         print(df)
         
